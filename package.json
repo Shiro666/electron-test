@@ -1,0 +1,33 @@
+{
+  "name": "electron-test",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "kill-port 3000 && concurrently -k \"vite\" \"wait-on tcp:3000 && npm-run-all watch\"",
+    "watch": "tsc-watch --noClear -p tsconfig.e.json --onSuccess \"npm-run-all start:electron\"",
+    "start:electron": "cross-env NODE_ENV=development electron ./dist_node/main",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tsc_node": "tsc --p ./tsconfig.e.json"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.58.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "electron": "22",
+    "kill-port": "^2.0.1",
+    "npm-run-all": "^4.1.5",
+    "tsc-watch": "^6.0.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "wait-on": "^7.0.1"
+  }
+}
